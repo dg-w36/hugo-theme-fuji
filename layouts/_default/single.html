@@ -4,9 +4,13 @@
     <h2 class="post-item post-title">
         <a href="{{ .Permalink }}">{{ .Title }}</a>
     </h2>
-    <div class="post-item post-meta">
-        {{ partial "post-meta.html" . }}
-    </div>
+
+    {{ if and (.Site.Params.showMateData) (ne .Params.showMate false) }}
+        <div class="post-item post-meta">
+            {{ partial "post-meta.html" . }}
+        </div>
+    {{ end }}
+
     {{ with .Params.player }}
     <div id="post-aplayer"></div>
     {{ end }}
